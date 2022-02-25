@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Bootstrap Sticky Footer Template</title>
+
+  <!--  Styles  -->
+  <link rel="stylesheet" href="/static/css/index.processed.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+  <!-- Fixed navbar -->
+  <header>
+      {% include 'includes/header.html' %}
+  </header>
+
+  <!-- Begin page content -->
+  <div class="container">
+    <div class="page-header">
+      <h1>Замещающие сотрудники</h1>
+    </div>
+    <form action="/avrora_leave/new_leave/" method="get">
+
+        {% for task in  names %}
+        <label for="team_name">{{ task }}
+
+           <select size="1" name="people" >
+        <option selected value="Выберете ответственного">Выберете ответственного</option>
+               {% for name in worker %}
+        <option value="{{ name }}">{{ name }}</option>
+
+                   {% endfor %}
+       </select>
+       </label><br />
+        {% endfor %}<br />
+
+        <input type="text" value="{{ names }}" style="display: none" name="id"><br />
+        <input type="text" value="{{ vv }}" style="display: none" name="vv"><br />
+        <input type="submit" value="Отправить на согласование">
+    </form>
+
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="text-muted">Это сделал я</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/static/js/index.js"></script>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+
+</html>
