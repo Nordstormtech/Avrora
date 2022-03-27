@@ -23,6 +23,5 @@ urlpatterns = [
     path('', application.views.index),
     path('admin/', admin.site.urls),
     path('avrora_leave/user_<int:pk>/<int:vv>/', application.views.avrora),
-    path('avrora_leave/new_leave/', application.views.new_avrora),
-    path('avrora_check_sum/', application.views.avrora_check)
+    path('avrora_leave/new_leave/', application.views.new_avrora)
 ]

@@ -1,6 +1,5 @@
-#!/bin/sh
-
-if [ "$DATABASE" = "postgres" ]
+#!/bin/bash
+if [ "$SQL_DATABASE" = "avrora" ]
 then
     echo "Waiting for postgres..."
 

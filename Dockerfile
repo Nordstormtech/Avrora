@@ -1,17 +1,27 @@
-FROM python:3.8.3-alpine
+FROM python:3.10.1-slim-buster
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-WORKDIR usr/src/Avrora_Leave
+WORKDIR usr/src/Avrora
+
+
+RUN apt-get update \
+    && apt-get -y install netcat gcc postgresql libpq-dev \
+    && pip install --upgrade pip \
+    && apt-get clean
+
+# install python dependencies
+COPY ./requirements.txt .
+RUN pip install -r requirements.txt
+
+# add app
 COPY . .
 
-RUN apk update \
-    && apk add postgresql-dev gcc python3-dev musl-dev \
-    && pip install --upgrade pip \
-    && pip install -r requirements.txt \
-    && apk add --no-cache --upgrade bash \
-    && chmod +x entrypoint.sh
+# add entrypoint.sh
+COPY ./entrypoint.sh .
+RUN chmod +x /usr/src/Avrora/entrypoint.sh
 
 
-CMD ["sh", "entrypoint.sh"]
+ENTRYPOINT ["/usr/src/Avrora/entrypoint.sh"]
+#CMD ["sh", "entrypoint.sh"]
