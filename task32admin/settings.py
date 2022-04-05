@@ -24,8 +24,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = int(os.environ.get("DEBUG", default=0))
-
+DEBUG = False
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 
 
@@ -71,7 +70,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'task32admin.wsgi.application'
 
-
+# python manage.py runserver 0.0.0.0:8000
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -105,7 +104,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -122,5 +124,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+STATIC_URL = '/staticfiles/'
+STATIC_ROOT =  os.path.join(BASE_DIR, "staticfiles")

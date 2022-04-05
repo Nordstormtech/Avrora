@@ -15,7 +15,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
 import application.views
 
 
@@ -25,3 +24,6 @@ urlpatterns = [
     path('avrora_leave/user_<int:pk>/<int:vv>/', application.views.avrora),
     path('avrora_leave/new_leave/', application.views.new_avrora)
 ]
+
+handler404 = "application.views.page_not_found_view"
+handler500 = "application.views.page_not_found_view"
