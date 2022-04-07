@@ -3,6 +3,7 @@ from .models import People
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from static.bitrix import B24 as bitrix
+
 clas = bitrix()
 
 def index(request):
@@ -57,5 +58,9 @@ def new_avrora(request):
     return HttpResponse(message)
 
 
-def page_not_found_view(request, exception):
-    return render(request, '404.html', status=404)
+def page_not_found_view_400(request,  *args, **argv):
+    return render(request, "404.html", status=404)
+
+def page_not_found_view_500(request, *args, **argv):
+    return render(request, "404.html", status=500)
+

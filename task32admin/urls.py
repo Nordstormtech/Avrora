@@ -25,5 +25,5 @@ urlpatterns = [
     path('avrora_leave/new_leave/', application.views.new_avrora)
 ]
 
-handler404 = "application.views.page_not_found_view"
-handler500 = "application.views.page_not_found_view"
+handler404 = "application.views.page_not_found_view_400"
+handler500 = "application.views.page_not_found_view_500"
