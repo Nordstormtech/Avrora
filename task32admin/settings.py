@@ -49,8 +49,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+#CSRF_COOKIE_SECURE = False
+#CSRF_TRUSTED_ORIGINS = ["https://127.0.0.1"]
 ROOT_URLCONF = 'task32admin.urls'
+#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 TEMPLATES = [
     {
