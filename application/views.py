@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from static.bitrix import B24 as bitrix
 from static.bitrix import Avrora_4 as Avrora
+import json
 
 clas = bitrix()
 
@@ -60,7 +61,8 @@ def new_avrora(request):
 
 def revenue_calculation(request, id_project):
     b24 = Avrora()
-    return b24.main(id_project)
+    data = b24.main(id_project)
+    return json.dumps(data)
 
 
 def page_not_found_view_400(request,  *args, **argv):
