@@ -3,6 +3,7 @@ from .models import People
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from static.bitrix import B24 as bitrix
+from static.bitrix import Avrora_4 as Avrora
 
 clas = bitrix()
 
@@ -56,6 +57,10 @@ def new_avrora(request):
     else:
         message = 'Вы не заполнили лист замещения'
     return HttpResponse(message)
+
+def revenue_calculation(request, id_project):
+    b24 = Avrora()
+    return b24.main(id_project)
 
 
 def page_not_found_view_400(request,  *args, **argv):
