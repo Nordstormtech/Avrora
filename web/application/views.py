@@ -2,8 +2,8 @@ from django.shortcuts import render
 from .models import People
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from web.staticfiles.bitrix import B24
-from web.staticfiles.bitrix import Avrora_4
+from staticfiles.bitrix import B24
+from staticfiles.bitrix import Avrora_4
 import json
 
 clas = B24()
