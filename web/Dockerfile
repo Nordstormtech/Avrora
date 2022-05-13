@@ -16,7 +16,7 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 # add app
-COPY .. .
+COPY . .
 
 # add entrypoint.sh
 COPY entrypoint.sh .
