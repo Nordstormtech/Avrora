@@ -5,7 +5,6 @@ import datetime
 class B24:
     def __init__(self):
         self.bx24 = bitrix24.Bitrix24(os.environ.get("BITRIX_TOKEN"))
-        #self.token = bitrix24.Bitrix24('https://bitrix.aukettswanke.ru/rest/4/6dyeny2wwup63rsc/')
 
     def bitrix_check_task(self, id_person):
         try:
