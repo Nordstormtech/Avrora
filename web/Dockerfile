@@ -3,7 +3,7 @@ FROM python:3.10.1-slim-buster
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-WORKDIR usr/src/Avrora
+WORKDIR usr/src/web
 
 
 RUN apt-get update \
@@ -12,16 +12,16 @@ RUN apt-get update \
     && apt-get clean
 
 # install python dependencies
-COPY ./requirements.txt .
+COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 # add app
-COPY . .
+COPY .. .
 
 # add entrypoint.sh
-COPY ./entrypoint.sh .
-RUN chmod +x /usr/src/Avrora/entrypoint.sh
+COPY entrypoint.sh .
+RUN chmod +x /usr/src/web/entrypoint.sh
 
 
-ENTRYPOINT ["/usr/src/Avrora/entrypoint.sh"]
+ENTRYPOINT ["/usr/src/web/entrypoint.sh"]
 #CMD ["sh", "entrypoint.sh"]

@@ -15,15 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-import application.views
+import application.views as avrora
 
 
 urlpatterns = [
-    path('', application.views.index),
+    path('', avrora.index),
     path('admin/', admin.site.urls),
-    path('avrora_leave/user_<int:pk>/<int:vv>/', application.views.avrora),
-    path('avrora_leave/new_leave/', application.views.new_avrora),
-    path('revenue_calculation/<str:id_project>', application.views.revenue_calculation)
+    path('avrora_leave/user_<int:pk>/<int:vv>/', avrora.avrora),
+    path('avrora_leave/new_leave/', avrora.new_avrora),
+    path('revenue_calculation/<str:id_project>', avrora.revenue_calculation)
 ]
 
 handler404 = "application.views.page_not_found_view_400"

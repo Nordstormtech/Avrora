@@ -2,11 +2,11 @@ from django.shortcuts import render
 from .models import People
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from static.bitrix import B24 as bitrix
-from static.bitrix import Avrora_4 as Avrora
+from staticfiles.bitrix import B24
+from staticfiles.bitrix import Avrora_4
 import json
 
-clas = bitrix()
+clas = B24()
 
 def index(request):
     return HttpResponse('Главная страница')
@@ -60,7 +60,7 @@ def new_avrora(request):
     return HttpResponse(message)
 
 def revenue_calculation(request, id_project):
-    b24 = Avrora()
+    b24 = Avrora_4()
     data = b24.main(id_project)
     return json.dumps(data)
 
