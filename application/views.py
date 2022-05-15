@@ -62,7 +62,7 @@ def new_avrora(request):
 def revenue_calculation(request, id_project):
     b24 = Avrora()
     data = b24.main(id_project)
-    return json.dumps(data)
+    return HttpResponse(json.dumps(data, ensure_ascii=False))
 
 
 def page_not_found_view_400(request,  *args, **argv):
