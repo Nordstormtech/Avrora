@@ -2,14 +2,14 @@ version: '3.9'
 services:
   web:
     restart: always
-    build: .
+    build: ./web
     command: gunicorn task32admin.wsgi:application --bind 0.0.0.0:8004
     volumes:
-      - static_volume:/usr/src/Avrora/staticfiles
+      - static_volume:/usr/src/web/staticfiles
     expose:
       - 8004
     env_file:
-      - ./.env.dev
+      - .env.dev
     depends_on:
       - db
   db:
@@ -23,7 +23,7 @@ services:
   nginx:
     build: ./nginx
     volumes:
-      - static_volume:/usr/src/Avrora/staticfiles
+      - static_volume:/usr/src/web/staticfiles
     ports:
       - "8003:8003"
     depends_on:

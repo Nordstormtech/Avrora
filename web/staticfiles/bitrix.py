@@ -5,7 +5,6 @@ import datetime
 class B24:
     def __init__(self):
         self.bx24 = bitrix24.Bitrix24(os.environ.get("BITRIX_TOKEN"))
-        #self.token = bitrix24.Bitrix24('https://bitrix.aukettswanke.ru/rest/4/6dyeny2wwup63rsc/')
 
     def bitrix_check_task(self, id_person):
         try:
@@ -170,12 +169,20 @@ class Avrora_4(B24):
                     data_final = data_create.strftime("%B%Y")
                     a = list(itog.keys())
 
-                    if expenditure == '08-01 (БДДС) Билеты для сотрудников ПП' or expenditure ==' 08-02 (БДДС) Проживание в гостиницах сотрудников ПП' or expenditure ==' 08-03 (БДДС) Суточные для сотрудников ПП' or expenditure =='08-08 (БДДС) Прочие расходы в командировке сотрудников ПП':
+                    if expenditure == '08-01 (БДДС) Билеты для сотрудников ПП' \
+                            or expenditure ==' 08-02 (БДДС) Проживание в гостиницах сотрудников ПП' \
+                            or expenditure ==' 08-03 (БДДС) Суточные для сотрудников ПП' \
+                            or expenditure =='08-08 (БДДС) Прочие расходы в командировке сотрудников ПП':
                         keys = 'posting'
+                    elif expenditure == 'СЕБ 03-01 (БДДС) Вознаграждение за услуги производственного назначения по договору ГПХ и самозанятым (без учета НДФЛ)' \
+                            or expenditure == 'СЕБ 05-02 (БДДС) Страховые взносы на вознаграждение (ГПХ, самозанятые) по услугам производственного назначения' \
+                            or expenditure =='СЕБ 05-02 (БДДС) Страховые взносы на вознаграждение (ГПХ, самозанятые) по услугам производственного назначения' \
+                            or expenditure=='СЕБ 14-02 (БДДС) Расходы на подрядчиков производственного характера (услуги сторонних организаций) по проектированию':
+                        keys = 'contractor'
                     elif expenditure == '16-01 (БДДС) Представительские расходы производственного назначения':
                         keys = 'hospitality expenses'
                     elif expenditure == '33-01 (БДДС) Агентские расходы':
-                        keys = 'Agents commission'
+                        keys = 'agents commission'
                     else:
                         keys = 'other expenses'
                     if data_final not in a:
