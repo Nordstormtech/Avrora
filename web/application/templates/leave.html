@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Заявление на отпуск</title>
-  <link rel="stylesheet" href="/web/staticfiles/css/main.css" type="text/css">
-  <link rel="stylesheet" type="text/css" href="/web/staticfiles/css/header.css">
+  <link rel="stylesheet" href="/staticfiles/css/main.css" type="text/css">
+  <link rel="stylesheet" type="text/css" href="/staticfiles/css/header.css">
 </head>
 
 <body>
-{% include 'includes/includes/header.html' %}
+{% include "header.html" %}
   <!-- Begin page content -->
   <section>
     <div class="page-header">
@@ -22,11 +22,11 @@
         {% for task in  names %}
         <label for="team_name">{{ task }}
 
-           <select size="1" name="people" >
+            <select size="1" name="people" >
         <option selected value="Выберете ответственного">Выберете ответственного</option>
-               {% for name in worker %}
-        <option value="{{ name }}">{{ name }}</option>
-                   {% endfor %}
+        {% for name in worker %}
+            <option value="{{ name }}">{{ name }}</option>
+        {% endfor %}
        </select>
        </label><br />
          <br>

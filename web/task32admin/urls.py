@@ -26,5 +26,5 @@ urlpatterns = [
     path('revenue_calculation/<str:id_project>', avrora.revenue_calculation)
 ]
 
-handler404 = "application.views.page_not_found_view_400"
-handler500 = "application.views.page_not_found_view_500"
+#handler404 = "application.views.page_not_found_view_400"
+#handler500 = "application.views.page_not_found_view_500"

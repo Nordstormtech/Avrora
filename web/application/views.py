@@ -5,11 +5,11 @@ from django.views.decorators.csrf import csrf_exempt
 from staticfiles.bitrix import B24
 from staticfiles.bitrix import Avrora_4
 import json
-
 clas = B24()
 
 def index(request):
-    return HttpResponse('Главная страница')
+    return HttpResponse('главная страница')
+
 
 
 def avrora(request, pk, vv):
@@ -29,9 +29,8 @@ def avrora(request, pk, vv):
             except:
                 group_name = ''
         names.append(f"{group_name}.{i['title']}")
-
     context = {'numbers': range(a), 'names': names, 'worker': worker, 'vv': vv}
-    return render(request, 'avrora_leave.html', context=context)
+    return render(request, "leave.html", context=context)
 
 
 @csrf_exempt
